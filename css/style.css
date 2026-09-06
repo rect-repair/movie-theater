@@ -64,20 +64,23 @@ h1, h2, h3, h4 { margin: 0; font-weight: bold; }
   color: #a60;
   overflow: hidden;
 }
-#notice-bar b { margin-right: 8px; }
-#notice-bar marquee { vertical-align: middle; }
+#notice-bar { display: flex; align-items: center; gap: 8px; }
+#notice-bar b { flex-shrink: 0; }
+#notice-bar marquee { flex: 1; min-width: 0; width: auto; }
 
 /* 内容区 */
 #main { padding: 14px; display: flex; gap: 14px; align-items: flex-start; }
 #content { flex: 1; min-width: 0; }
-#side { width: 220px; flex-shrink: 0; }
+#side { width: 250px; flex-shrink: 0; }
 @media (max-width: 760px) {
+  #wrap > .crumb { padding: 10px 10px 0; }
   #main { flex-direction: column; align-items: stretch; padding: 10px; }
   #content, #side { width: 100%; max-width: 100%; }
 }
 
 /* 面包屑 */
 .crumb { color: #999; margin-bottom: 10px; }
+#wrap > .crumb { padding: 12px 14px 0; margin: 0; }
 .crumb a { color: #666; }
 
 /* 模块盒子 */
@@ -269,7 +272,7 @@ label { cursor: pointer; }
   padding: 4px 0 8px;
 }
 #seatmap .row { display: flex; align-items: center; width: max-content; margin: 3px auto; }
-#seatmap .rowlabel { width: 2.4em; text-align: right; color: #999; font-size: 11px; margin-right: 6px; flex-shrink: 0; }
+#seatmap .rowlabel { width: 2.4em; text-align: right; color: #999; font-size: 11px; margin-right: 6px; flex-shrink: 0; white-space: nowrap; }
 #seatmap .gap { width: 14px; flex-shrink: 0; }
 .seat {
   width: 20px; height: 18px;
@@ -305,7 +308,7 @@ label { cursor: pointer; }
 @media (max-width: 640px) {
   .seat { width: 22px; height: 20px; line-height: 18px; font-size: 10px; }
   #seatmap .gap { width: 8px; }
-  #seatmap .rowlabel { width: 2em; margin-right: 4px; }
+  #seatmap .rowlabel { width: 2.4em; margin-right: 4px; }
   #seat-box .bd { padding: 10px 4px; }
   #screen { width: 92%; }
 }
