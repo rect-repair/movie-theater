@@ -1,0 +1,10 @@
+name = "jt-seats"
+main = "worker.js"
+compatibility_date = "2026-09-01"
+
+# 1. npx wrangler kv namespace create SEATS   → 把输出的 id 填到下面
+# 2. npx wrangler secret put ADMIN_KEY        → 输入一个自己记得住的口令
+# 3. npx wrangler deploy                      → 得到 https://jt-seats.<账号>.workers.dev
+[[kv_namespaces]]
+binding = "SEATS"
+id = "PASTE_KV_NAMESPACE_ID_HERE"

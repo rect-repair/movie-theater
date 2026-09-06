@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+text.md
+reviews_raw.md
+image.png
+
+# wrangler local state / local secrets / deps
+worker/.wrangler/
+worker/.dev.vars
+worker/node_modules/
+node_modules/

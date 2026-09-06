@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>观众影评</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div id="wrap">
+
+    <div id="header">
+      <div id="logo">
+        <div class="name"><a href="index.html">？？影剧院</a></div>
+      </div>
+      <div id="toplinks"><a href="#">设为首页</a>|<a href="#">加入收藏</a>|<a href="index.html#contact">联系我们</a></div>
+    </div>
+
+    <div id="main">
+      <div id="content">
+        <div class="crumb"><a href="index.html">首页</a> &raquo; 观众影评</div>
+
+        <div class="box">
+          <div class="hd">观众短评 <span class="more">共 <span id="review-count">0</span> 条 · 涉及影片名称已按规定处理</span></div>
+          <div class="bd">
+            <div class="tabs">
+              <a href="#" data-sort="new" class="on">最新</a><a href="#" data-sort="hot">最热</a><a href="#"
+                data-sort="worst">最差</a><a href="#" data-sort="best">最佳</a>
+            </div>
+            <div id="reviews"></div>
+            <div class="pager" id="pager"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="side">
+        <div class="box">
+          <div class="hd">评分分布</div>
+          <div class="bd">
+            <table class="info" id="dist">
+              <tr>
+                <th>力荐 ★★★★★</th>
+                <td><i class="bar" data-n="5"></i></td>
+              </tr>
+              <tr>
+                <th>推荐 ★★★★</th>
+                <td><i class="bar" data-n="4"></i></td>
+              </tr>
+              <tr>
+                <th>还行 ★★★</th>
+                <td><i class="bar" data-n="3"></i></td>
+              </tr>
+              <tr>
+                <th>较差 ★★</th>
+                <td><i class="bar" data-n="2"></i></td>
+              </tr>
+              <tr>
+                <th>很差 ★</th>
+                <td><i class="bar" data-n="1"></i></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="box">
+          <div class="hd">我要写短评</div>
+          <div class="bd">
+            <p class="gray">短评功能已于 2019 年 11 月 3 日起关闭，暂不恢复。</p>
+            <p class="gray small">如您需要撤回此前发表的短评，请携带当时的票根前往售票处办理。</p>
+            <button disabled>发表短评</button>
+          </div>
+        </div>
+        <div class="box">
+          <div class="hd">最近上映</div>
+          <div class="bd">
+            <p><span class="redact">██████████</span> <span class="gray small">特别放映</span><br>二楼放映厅 · 9月12日 19:00<br>余票
+              <b class="remaining">—</b> 张
+            </p>
+            <a class="btn primary" href="booking.html">在线订票</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer">
+      ？？影剧院 北京市门头沟区京潭中路 17 号<br>
+      京ICP备19XXXXXX号-1 &nbsp;|&nbsp; 京公网安备 110109XXXXXXXX号<br>本站最后更新：<span id="today"></span>
+    </div>
+  </div>
+  <script src="data/taken.js"></script>
+  <script src="js/seats.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/reviews-data.js"></script>
+  <script src="js/reviews.js"></script>
+</body>
+
+</html>

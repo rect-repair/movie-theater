@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>？？影剧院 - 在线订票</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div id="wrap">
+
+    <div id="header">
+      <div id="logo">
+        <div class="name"><a href="index.html">？？影剧院</a></div>
+      </div>
+      <div id="toplinks"><a href="#">设为首页</a>|<a href="#">加入收藏</a>|<a href="index.html#contact">联系我们</a></div>
+    </div>
+
+    <div id="main">
+      <div id="content">
+        <div class="crumb"><a href="index.html">首页</a> &raquo; 订票</div>
+
+        <!-- 已有订票记录时显示 -->
+        <div id="already" class="msg ok" hidden>
+          本机已有订票记录：<b id="already-seat"></b>。<a href="#" id="show-receipt">查看订票回执</a>
+          <span class="gray">｜</span><a href="#" id="clear-booking" class="gray">清除本机记录</a>
+        </div>
+
+        <div id="flow">
+          <div class="box">
+            <div class="hd">场次信息</div>
+            <div class="bd">
+              <table class="info">
+                <tr>
+                  <th>影片</th>
+                  <td><span class="redact">██████████</span></td>
+                </tr>
+                <tr>
+                  <th>放映厅</th>
+                  <td>二楼放映厅</td>
+                </tr>
+                <tr>
+                  <th>放映时间</th>
+                  <td>2026 年 9 月 12 日（周六） 19:00</td>
+                </tr>
+                <tr>
+                  <th>票价</th>
+                  <td>凭纸质票券入场</td>
+                </tr>
+                <tr>
+                  <th>余票</th>
+                  <td><b class="remaining">—</b> 张</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="box" id="seat-box">
+            <div class="hd">选座 <span class="more">点击座位即可登记</span></div>
+            <div class="bd">
+              <div id="screen">银 幕</div>
+              <div id="seatmap"></div>
+              <div class="legend">
+                <span><i></i>可选</span><span><i class="taken"></i>已订</span><span><i
+                    class="reserved"></i>预留</span><span><i class="selected"></i>已选</span>
+              </div>
+              <p style="margin:10px 0 0;text-align:center">您已选择：<b id="picked">—</b> <span id="seat-msg"
+                  class="gray"></span></p>
+            </div>
+          </div>
+
+          <div class="box" id="form-box" hidden>
+            <div class="hd">观众登记问卷</div>
+            <div class="bd">
+              <p>您选择的座位已暂时保留。为完成订票，请填写以下问卷。请根据当前记忆独立作答。涉及过往经历的问题，请以最先想到的答案为准。问卷提交后无法修改。</p>
+              <div id="form-msg" class="msg" hidden></div>
+
+              <form id="qform" autocomplete="off">
+                <div class="form-row">
+                  <div class="q"><span class="num">1.</span>您的姓名是？<span class="req">*</span></div>
+                  <input type="text" name="name" maxlength="20">
+                </div>
+                <div class="form-row">
+                  <div class="q"><span class="num">2.</span>您记忆中观看的第一部电影是？<span class="req">*</span></div>
+                  <input type="text" name="first_film" maxlength="60">
+                </div>
+                <div class="form-row">
+                  <div class="q"><span class="num">3.</span>您能够回忆起的人生中最早的画面是什么？<span class="req">*</span></div>
+                  <textarea name="earliest" maxlength="300"></textarea>
+                </div>
+                <div class="form-row">
+                  <div class="q"><span class="num">4.</span>您上一次在观影途中入睡时，放映的是哪部影片？<span class="req">*</span></div>
+                  <input type="text" name="asleep_film" maxlength="60">
+                </div>
+                <div class="form-row disabled">
+                  <div class="q"><span class="num">5.</span><span class="strike-hand">您是否有在服用精神类药物？</span></div>
+                </div>
+                <div class="form-row">
+                  <div class="q"><span class="num">6.</span>您近期是否正在服用可能影响注意力、意识状态或记忆的药物？<span class="req">*</span></div>
+                  <div class="opts">
+                    <label><input type="radio" name="meds" value="是"> 是</label>
+                    <label><input type="radio" name="meds" value="否"> 否</label>
+                    <label><input type="radio" name="meds" value="无法确认"> 无法确认</label>
+                    <label><input type="radio" name="meds" value="不便回答"> 不便回答</label>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="q"><span class="num">7.</span>您是否认为自己的意志容易受到影像、声音或他人描述的影响？<span class="req">*</span></div>
+                  <div class="opts">
+                    <label><input type="radio" name="suggest" value="很容易"> 很容易</label>
+                    <label><input type="radio" name="suggest" value="偶尔"> 偶尔</label>
+                    <label><input type="radio" name="suggest" value="很少"> 很少</label>
+                    <label><input type="radio" name="suggest" value="从不"> 从不</label>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="q"><span class="num">8.</span>您是否习惯在观影后留下评分、短评或其他文字记录？<span class="req">*</span></div>
+                  <div class="opts">
+                    <label><input type="radio" name="review" value="经常"> 经常</label>
+                    <label><input type="radio" name="review" value="偶尔"> 偶尔</label>
+                    <label><input type="radio" name="review" value="从不"> 从不</label>
+                    <label><input type="radio" name="review" value="不记得"> 不记得</label>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="q"><span class="num">9.</span>您是否愿意严格遵守<a href="#rules-box">《观影须知》</a>？<span
+                      class="req">*</span></div>
+                  <div class="opts">
+                    <label><input type="radio" name="agree" value="是"> 是</label>
+                    <label><input type="radio" name="agree" value="否"> 否</label>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="q"><span class="num">10.</span>请再次填写您的姓名<span class="req">*</span></div>
+                  <input type="text" name="name2" maxlength="20">
+                </div>
+                <div style="padding:12px 0 4px;text-align:center">
+                  <button type="submit" class="primary">【确认提交并保留座位】</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- 订票回执 -->
+        <div id="receipt-wrap" hidden>
+          <div class="msg ok">订票已受理。<b>请截图保存本页</b>，添加剧场 7 号管理人员微信后，将截图发送给管理员。</div>
+          <div id="receipt">
+            <span class="stamp">已 受 理</span>
+            <h3>订票回执</h3>
+            <table class="info">
+              <tr>
+                <th>回执编号</th>
+                <td id="r-no"></td>
+              </tr>
+              <tr>
+                <th>场次</th>
+                <td>2026 年 9 月 12 日 19:00 · 特别放映 <span class="redact">██████████</span></td>
+              </tr>
+              <tr>
+                <th>放映厅</th>
+                <td>二楼放映厅</td>
+              </tr>
+              <tr>
+                <th>座位</th>
+                <td id="r-seat"></td>
+              </tr>
+              <tr>
+                <th>观影人</th>
+                <td id="r-name"></td>
+              </tr>
+              <tr>
+                <th>提交时间</th>
+                <td id="r-time"></td>
+              </tr>
+            </table>
+
+            <p style="margin:12px 0 4px"><b>问卷记录</b> <span class="gray small">（提交后无法修改）</span></p>
+            <table class="info" id="r-answers"></table>
+
+            <div style="margin-top:14px;display:flex;gap:14px;flex-wrap:wrap;align-items:flex-start">
+              <img class="qr" src="img/qr.svg" alt="管理人员微信二维码">
+              <div style="flex:1;min-width:200px">
+                <p style="margin:0 0 6px"><b>下一步</b></p>
+                <p style="margin:0 0 4px">1. 扫描左侧二维码添加剧场管理员微信</p>
+                <p style="margin:0 0 4px">2. 将本页截图发送给管理员</p>
+                <p style="margin:0 0 4px">3. 于 9月10日 12:00 至 9月12日 17:00，前往慢闪广场附近领取纸质票券</p>
+                <p style="margin:0 0 4px">4. 9月12日 19:00 准时参加放映（须至少提前 2 小时取票）</p>
+              </div>
+            </div>
+
+            <p class="warn" style="margin:12px 0 0">若取票失败，切勿进入剧场。非相关人员若强行闯入，工作人员将采取强硬措施驱逐，违者后果自负。</p>
+            <p class="gray small" style="margin:8px 0 0">本回执不作为入场凭证。凭纸质票券入场。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box" id="rules-box">
+      <div class="hd">观影指引 <span class="more">二楼放映厅适用</span></div>
+      <div class="bd">
+        <p>为保障放映秩序及观众安全，请在入场前仔细阅读以下指引:</p>
+        <ol class="rules">
+          <li>取票时间与放映时间不同，请注意。未在规定时间内完成取票，将视为主动放弃观影资格，请合理安排取票及出行时间。</li>
+          <li>取票时，请向工作人员出示预约信息及有效身份证明。</li>
+          <li>完成取票前，请勿前往放映场地。</li>
+          <li>本场放映实行一人一票。预约人、取票人及观影人须为同一人。</li>
+          <li>切勿跟随其他观众进入剧场。</li>
+          <li>票券为入场唯一凭证，请妥善保管，并保留至放映全部结束。</li>
+          <li>放映开始后停止入场。迟到观众将无法进入，敬请谅解。</li>
+          <li>进入放映场地后，请按照票面指引就座，请勿自行更换座位。</li>
+          <li>放映期间请将手机调至静音。允许进行文字记录；禁止摄影、录音及录像。</li>
+        </ol>
+        <p class="warn" style="margin:10px 0 0"><b>温馨提示：</b>因未按指引操作所产生的任何后果，由观众本人承担。</p>
+      </div>
+    </div>
+
+    <div id="footer">
+      ？？影剧院 北京市门头沟区京潭中路 17 号<br>
+      京ICP备19XXXXXX号-1 &nbsp;|&nbsp; 京公网安备 110109XXXXXXXX号<br>本站最后更新：<span id="today"></span>
+    </div>
+  </div>
+
+  <!-- 成功弹窗 -->
+  <div id="mask" hidden></div>
+  <div id="dialog" hidden>
+    <div class="hd">订票成功！</div>
+    <div class="bd">
+      <div class="ft"><button id="dialog-ok" class="primary">查看订票回执</button></div>
+    </div>
+  </div>
+
+  <script src="data/taken.js"></script>
+  <script src="js/seats.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/booking.js"></script>
+</body>
+
+</html>
