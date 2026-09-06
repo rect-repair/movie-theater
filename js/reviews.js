@@ -23,7 +23,7 @@
 
   function redact(text) {
     return esc(text).replace(/\{\{(.+?)\}\}/g, function (_, name) {
-      return "《" + blocks(name) + "》";
+      return " " + blocks(name) + " ";
     });
   }
 
@@ -46,22 +46,22 @@
       div.innerHTML =
         '<div class="avatar">' + esc(avatarChar(r.user)) + '</div>' +
         '<div class="body">' +
-          '<div class="meta"><span class="user">' + esc(r.user) + '</span>' +
-            '<span class="stars">' + stars(r.stars) + '</span><span class="rating">' + LABEL[r.stars] + '</span>' +
-            '<span class="gray">看过</span> ' + (r.film ? "《" + blocks(r.film) + "》" : "") +
-            '<span class="date">' + esc(r.date) + '</span></div>' +
-          '<div class="text">' + redact(r.text) + '</div>' +
-          '<div class="foot"><a href="#">' + (r.useful || 0) + ' 有用</a><a href="#">回应</a><a href="#" class="gray">举报</a></div>' +
+        '<div class="meta"><span class="user">' + esc(r.user) + '</span>' +
+        '<span class="stars">' + stars(r.stars) + '</span><span class="rating">' + LABEL[r.stars] + '</span>' +
+        '<span class="gray">看过</span> ' + (r.film ? "《" + blocks(r.film) + "》" : "") +
+        '<span class="date">' + esc(r.date) + '</span></div>' +
+        '<div class="text">' + redact(r.text) + '</div>' +
+        '<div class="foot"><a href="#">' + (r.useful || 0) + ' 有用</a><a href="#">回应</a><a href="#" class="gray">举报</a></div>' +
         '</div>';
       list.appendChild(div);
     });
   }
 
   var SORT = {
-    new:   function (a, b) { return b.date.localeCompare(a.date); },
-    hot:   function (a, b) { return (b.useful || 0) - (a.useful || 0); },
+    new: function (a, b) { return b.date.localeCompare(a.date); },
+    hot: function (a, b) { return (b.useful || 0) - (a.useful || 0); },
     worst: function (a, b) { return a.stars - b.stars || (b.useful || 0) - (a.useful || 0); },
-    best:  function (a, b) { return b.stars - a.stars || (b.useful || 0) - (a.useful || 0); }
+    best: function (a, b) { return b.stars - a.stars || (b.useful || 0) - (a.useful || 0); }
   };
 
   function ordered() {
