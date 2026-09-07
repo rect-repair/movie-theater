@@ -1,23 +1,23 @@
 # ？？影剧院 ARG landing site
 
-## Optional: automatic seat blocking with a Cloudflare Worker
+## Seat list: `data/seats.json`
 
-The site never depends on this. With `REMOTE` empty in `data/taken.js`, everything is local. With it set, the site fetches the live taken list on load and posts the seat after a successful questionnaire. If the request can't get out (no VPN, timeout), the visitor sees nothing different: the receipt appears as usual after at most 5 seconds and you reconcile from the WeChat screenshot. If the worker answers that the seat was just taken by someone else, the form shows a 提交失败 message and the map refreshes.
+Taken seats live in `data/seats.json` and nowhere else. When a booking is approved over WeChat, add its seat id to the `taken` array, commit, push, and the site picks it up on the next page load (GitHub Pages can take a minute or two to publish).
 
-Setup, about 10 minutes, from the `worker/` folder:
+```json
+{
+  "taken": [
+    "3-5",
+    "3-6"
+  ]
+}
 ```
-npx wrangler login
-npx wrangler kv namespace create SEATS      # paste the id into wrangler.toml
-npx wrangler secret put ADMIN_KEY           # any passphrase you'll remember
-npx wrangler deploy                         # prints https://jt-seats.<account>.workers.dev
-```
-Then put that URL in `REMOTE` in `data/taken.js` and redeploy the site. The same can be done in the Cloudflare dashboard: create a Worker, paste `worker/worker.js`, bind a KV namespace named `SEATS`, add a secret `ADMIN_KEY`.
 
-Admin endpoints:
-- `GET  <url>/admin?key=ADMIN_KEY` lists taken seats with receipt numbers and times.
-- `POST <url>/admin?key=ADMIN_KEY` with body `{"remove":"3-5"}` frees a seat.
+Seat ids are `row-seat`, so `3-5` is 3排5座. Every page fetches the file fresh on load (cache-busted), so the 剩余 counter and the map stay in step. On submit the booking page refetches it once more and refuses the seat if it has been taken since the map was drawn. If the fetch fails, the map simply shows every seat as free; the WeChat step is still the real check. Opening the site via `file://` blocks the fetch, so test with a local server (`python3 -m http.server`).
 
-The worker stores only seat id, receipt number, and time, never names or answers. KV is eventually consistent, so two people submitting the same seat within the same second could both get through; the WeChat step catches that. `workers.dev` is often unreachable from the mainland; a custom domain routed through Cloudflare fares better, but plan for the manual path regardless.
+Layout, showtime, and the 调查组 reserved seats stay in `data/taken.js`.
+
+The `worker/` folder is an abandoned Cloudflare Worker experiment and is no longer referenced by the site.
 
 ## What is git-ignored and why
 

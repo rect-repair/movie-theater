@@ -575,7 +575,7 @@ label {
   z-index: 50;
 }
 
-#dialog {
+.dialog {
   position: fixed;
   left: 50%;
   top: 50%;
@@ -590,7 +590,7 @@ label {
   z-index: 51;
 }
 
-#dialog .hd {
+.dialog .hd {
   background: #d8d6d2;
   background: linear-gradient(#eceae6, #d0cec8);
   border-bottom: 1px solid #b0aca6;
@@ -599,11 +599,11 @@ label {
   color: #1a1a1a;
 }
 
-#dialog .bd {
+.dialog .bd {
   padding: 12px 14px;
 }
 
-#dialog .ft {
+.dialog .ft {
   padding: 8px 14px 12px;
   text-align: center;
 }
@@ -892,8 +892,7 @@ label {
 }
 
 .seat.mine {
-  background: #5a4a28;
-  border-color: #3a3018;
+  background: #f60;
   color: #fff;
   box-shadow: none;
 }
@@ -997,12 +996,6 @@ label {
   margin: 4px 0;
 }
 
-.rules li:nth-child(1),
-.rules li:nth-child(3),
-.rules li:nth-child(5) {
-  color: #ff2424;
-}
-
 #wrap>.box {
   margin: 0 14px 14px;
 }
@@ -1015,6 +1008,7 @@ label {
 
 /* 回执 */
 #receipt {
+  position: relative;
   border: 1px dashed #8a8680;
   padding: 12px 14px;
   background: #eceae6;
@@ -1028,7 +1022,9 @@ label {
 }
 
 #receipt .stamp {
-  float: right;
+  position: absolute;
+  right: 14px;
+  top: 10px;
   border: 2px solid #c33;
   color: #c33;
   padding: 2px 8px;
@@ -1036,12 +1032,12 @@ label {
   transform: rotate(-8deg);
   opacity: .8;
   letter-spacing: 2px;
-  margin: 0 0 6px 10px;
+  margin: 0;
 }
 
-#receipt .qr {
-  width: 180px;
-  height: 180px;
+#receipt-wrap .qr {
+  width: 200px;
+  height: 200px;
   border: 1px solid #8a8680;
   background: #d8d6d2;
   display: inline-block;

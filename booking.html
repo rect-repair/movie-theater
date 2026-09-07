@@ -140,8 +140,8 @@
                   </div>
                 </div>
                 <div class="form-row">
-                  <div class="q"><span class="num">9.</span>您是否愿意严格遵守<a href="#rules-box">《观影须知》</a>？<span
-                      class="req">*</span></div>
+                  <div class="q"><span class="num">9.</span>您是否愿意严格遵守<a href="#rules-box"
+                      id="rules-link">《观影须知》</a>？<span class="req">*</span></div>
                   <div class="opts">
                     <label><input type="radio" name="agree" value="是"> 是</label>
                     <label><input type="radio" name="agree" value="否"> 否</label>
@@ -162,6 +162,22 @@
         <!-- 订票回执 -->
         <div id="receipt-wrap" hidden>
           <div class="msg ok">订票已受理。<b>请截图保存本页</b>，添加剧场 7 号管理人员微信后，将截图发送给管理员。</div>
+          <div class="box" id="next-box">
+            <div class="hd">下一步</div>
+            <div class="bd">
+              <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-start">
+                <img class="qr" src="img/contact.jpg" alt="管理人员微信二维码">
+                <div style="flex:1;min-width:200px">
+                  <p style="margin:0 0 4px">1. 扫描二维码添加剧场管理员微信</p>
+                  <p style="margin:0 0 4px">2. 将下方订票回执截图发送给管理员，并支付票价 35 元</p>
+                  <p style="margin:0 0 4px">3. 于 9月10日 ~ 9月12日，每日 12:00 ~
+                    17:00 期间，前往【北京市门头沟区九峰路与京潭中路交叉口西南260米"FIRST大草坪中岛区"】附近领取纸质票券
+                  </p>
+                  <p style="margin:0 0 4px">4. 9月12日 19:00 准时前往【门头沟区鲁家滩西街 16 号，二楼放映厅】观影（须至少提前 2 小时取票）</p>
+                </div>
+              </div>
+            </div>
+          </div>
           <div id="receipt">
             <span class="stamp">已 受 理</span>
             <h3>订票回执</h3>
@@ -194,17 +210,6 @@
 
             <p style="margin:12px 0 4px"><b>问卷记录</b> <span class="gray small">（提交后无法修改）</span></p>
             <table class="info" id="r-answers"></table>
-
-            <div style="margin-top:14px;display:flex;gap:14px;flex-wrap:wrap;align-items:flex-start">
-              <img class="qr" src="img/contact.jpg" alt="管理人员微信二维码">
-              <div style="flex:1;min-width:200px">
-                <p style="margin:0 0 6px"><b>下一步</b></p>
-                <p style="margin:0 0 4px">1. 扫描左侧二维码添加剧场管理员微信</p>
-                <p style="margin:0 0 4px">2. 将本页截图发送给管理员</p>
-                <p style="margin:0 0 4px">3. 于 9月10日~ 9月12日，每日12:00 ~ 17:00期间，前往【北京市门头沟区九峰路与京潭中路交叉口西南260米"FIRST大草坪中岛区"】附近领取纸质票券</p>
-                <p style="margin:0 0 4px">4. 9月12日 19:00 准时前往【门头沟区鲁家滩西街16号，二楼放映厅】观影（须至少提前 2 小时取票）</p>
-              </div>
-            </div>
 
             <p class="warn" style="margin:12px 0 0">若取票失败，切勿进入剧场。非相关人员若强行闯入，工作人员将采取强硬措施驱逐，违者后果自负。</p>
             <p class="gray small" style="margin:8px 0 0">本回执不作为入场凭证。凭纸质票券入场。</p>
@@ -246,10 +251,17 @@
 
   <!-- 成功弹窗 -->
   <div id="mask" hidden></div>
-  <div id="dialog" hidden>
+  <div id="dialog" class="dialog" hidden>
     <div class="hd">订票成功！</div>
     <div class="bd">
       <div class="ft"><button id="dialog-ok" class="primary">查看订票回执</button></div>
+    </div>
+  </div>
+  <div id="rules-dialog" class="dialog" hidden>
+    <div class="hd">提示</div>
+    <div class="bd">
+      <p>《观影须知》需在线下领取</p>
+      <div class="ft"><button id="rules-ok" class="primary">好的</button></div>
     </div>
   </div>
 

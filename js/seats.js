@@ -1,5 +1,6 @@
 (function () {
   var C = window.SEAT_CONFIG;
+  var SRC = "data/seats.json";
 
   function allSeatIds() {
     var ids = [];
@@ -8,63 +9,36 @@
     return ids;
   }
 
-  var remote = {};
-  var syncing = null;
-  var base = (C.REMOTE || "").replace(/\/+$/, "");
+  var taken = {};
+  var loading = null;
 
-  function signal(ms) {
-    if (typeof AbortController === "undefined") return undefined;
-    var c = new AbortController();
-    setTimeout(function () { c.abort(); }, ms);
-    return c.signal;
-  }
   function timed(p, ms) {
     return new Promise(function (resolve, reject) {
       var t = setTimeout(function () { reject(new Error("timeout")); }, ms);
       p.then(function (v) { clearTimeout(t); resolve(v); }, function (e) { clearTimeout(t); reject(e); });
     });
   }
-  function absorb(list) {
-    if (!list || !list.length) return;
-    list.forEach(function (id) { remote[id] = 1; });
-  }
 
   function sync(cb) {
-    if (!base || typeof fetch === "undefined") { cb && cb(false); return; }
-    if (!syncing) {
-      syncing = timed(fetch(base + "/seats", { cache: "no-store", signal: signal(3500) })
-        .then(function (r) { return r.ok ? r.json() : null; }), 3500)
+    if (typeof fetch === "undefined") { cb && cb(false); return; }
+    if (!loading) {
+      loading = timed(fetch(SRC + "?t=" + Date.now(), { cache: "no-store" })
+        .then(function (r) { return r.ok ? r.json() : null; }), 5000)
         .then(function (d) {
-          syncing = null;
-          if (d && d.taken) { remote = {}; absorb(d.taken); return true; }
-          return false;
+          loading = null;
+          if (!d || !d.taken) return false;
+          taken = {};
+          d.taken.forEach(function (id) { taken[String(id)] = 1; });
+          return true;
         })
-        .catch(function () { syncing = null; return false; });
+        .catch(function () { loading = null; return false; });
     }
-    syncing.then(function (ok) { cb && cb(ok); });
-  }
-
-  function report(booking, cb) {
-    if (!base || typeof fetch === "undefined") { cb("offline"); return; }
-    timed(fetch(base + "/seats", {
-      method: "POST",
-      headers: { "Content-Type": "text/plain" },
-      body: JSON.stringify({ seat: booking.seat, no: booking.no }),
-      signal: signal(5000)
-    }).then(function (r) { return r.json(); }), 5000)
-      .then(function (d) {
-        if (d && d.taken) absorb(d.taken);
-        if (d && d.ok) cb("ok");
-        else if (d && d.reason === "taken") cb("taken");
-        else cb("offline");
-      })
-      .catch(function () { cb("offline"); });
+    loading.then(function (ok) { cb && cb(ok); });
   }
 
   function takenSet() {
     var set = {};
-    C.TAKEN_SEATS.forEach(function (id) { set[id] = 1; });
-    Object.keys(remote).forEach(function (id) { set[id] = 1; });
+    Object.keys(taken).forEach(function (id) { set[id] = 1; });
     return set;
   }
 
@@ -76,10 +50,10 @@
   }
 
   function remaining() {
-    var taken = takenSet();
-    var n = Object.keys(taken).length;
+    var t = takenSet();
+    var n = Object.keys(t).length;
     var mine = myBooking();
-    if (mine && !taken[mine.seat]) n += 1;
+    if (mine && !t[mine.seat]) n += 1;
     return C.rows * C.cols - C.RESERVED_SEATS.length - n;
   }
 
@@ -89,7 +63,6 @@
     remaining: remaining,
     myBooking: myBooking,
     sync: sync,
-    report: report,
     label: function (id) {
       var p = id.split("-");
       return p[0] + "排" + p[1] + "座";

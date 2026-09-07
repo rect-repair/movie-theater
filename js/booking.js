@@ -122,15 +122,15 @@
     var btn = f.querySelector("button[type=submit]");
     btn.disabled = true;
     btn.textContent = "正在提交…";
-    S.report(booking, function (res) {
+    S.sync(function () {
       btn.disabled = false;
-      btn.textContent = "【确认提交并保留座位】";
-      if (res === "taken") {
+      btn.textContent = "确认";
+      if (S.taken()[picked]) {
         refreshSeats();
         showErr("提交失败，您选择的座位刚刚已被他人预订，请重新选择座位。");
         return;
       }
-      try { localStorage.setItem("jt_booking", JSON.stringify(booking)); } catch (err) {}
+      try { localStorage.setItem("jt_booking", JSON.stringify(booking)); } catch (err) { }
       mine = booking;
       $("mask").hidden = false;
       $("dialog").hidden = false;
@@ -154,6 +154,16 @@
     $("mask").hidden = true;
     $("dialog").hidden = true;
     showReceipt();
+  });
+
+  $("rules-link").addEventListener("click", function (e) {
+    e.preventDefault();
+    $("mask").hidden = false;
+    $("rules-dialog").hidden = false;
+  });
+  $("rules-ok").addEventListener("click", function () {
+    $("mask").hidden = true;
+    $("rules-dialog").hidden = true;
   });
 
   function showReceipt() {
@@ -190,7 +200,7 @@
   $("show-receipt").addEventListener("click", function (e) { e.preventDefault(); showReceipt(); });
   $("clear-booking").addEventListener("click", function (e) {
     e.preventDefault();
-    try { localStorage.removeItem("jt_booking"); } catch (err) {}
+    try { localStorage.removeItem("jt_booking"); } catch (err) { }
     location.reload();
   });
 
