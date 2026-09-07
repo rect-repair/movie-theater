@@ -1,6 +1,6 @@
 /* 座位配置 */
 window.SEAT_CONFIG = {
-  REMOTE: "",
+  REMOTE: "http://127.0.0.1:8787",
 
   rows: 12,
   cols: 13,

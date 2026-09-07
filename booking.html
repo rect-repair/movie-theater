@@ -4,19 +4,38 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>？？影剧院 - 在线订票</title>
+  <title>在线订票</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
   <div id="wrap">
 
-    <div id="header">
-      <div id="logo">
-        <div class="name"><a href="index.html">？？影剧院</a></div>
-      </div>
+    <div id="topbar">
+      <span class="date">今天是：<span id="today-full"></span></span>
       <div id="toplinks"><a href="#">设为首页</a>|<a href="#">加入收藏</a>|<a href="index.html#contact">联系我们</a></div>
     </div>
+
+    <div id="header">
+      <div id="logo">
+        <div class="name"><a href="index.html">鲁家滩剧院</a></div>
+        <div class="en">Lujiatan Theater</div>
+      </div>
+      <form id="search" action="archive.html" method="get">
+        <label for="q">站内搜索</label>
+        <input type="text" id="q" name="q" maxlength="40">
+        <button type="submit">搜索</button>
+      </form>
+    </div>
+
+    <!-- <div id="nav">
+      <a href="index.html">网站首页</a>
+      <a href="index.html#about">剧院概况</a>
+      <a href="booking.html" class="on">在线订票</a>
+      <a href="reviews.html">观众影评</a>
+      <a href="archive.html">历史场次</a>
+      <a href="index.html#contact">联系我们</a>
+    </div> -->
 
     <div class="crumb"><a href="index.html">首页</a> &raquo; 订票</div>
 
@@ -59,7 +78,7 @@
           </div>
 
           <div class="box" id="seat-box">
-            <div class="hd">选座 <span class="more">点击座位即可登记</span></div>
+            <div class="hd">选座</div>
             <div class="bd">
               <div id="screen">银 幕</div>
               <div id="seatmap"></div>
@@ -218,10 +237,17 @@
       </div>
     </div>
 
+    <!-- 
+    <div id="links">
+      <b>友情链接：</b><a href="#">门头沟区人民政府</a><a href="#">门头沟区文化和旅游局</a><a href="#">中国电影发行放映协会</a><a href="#">京西文化网</a><a
+        href="#">鲁家滩社区服务中心</a>
+    </div> -->
     <div id="footer">
-      ？？影剧院 北京市门头沟区京潭中路 17 号<br>
-      京ICP备19XXXXXX号-1 &nbsp;|&nbsp; 京公网安备 110109XXXXXXXX号<br>本站最后更新：<span id="today"></span>
+      <p>鲁家滩剧院 北京市门头沟区鲁家滩西街 16 号</p>
+      <p>京ICP备19XXXXXX号-1 &nbsp;|&nbsp; 京公网安备 110109XXXXXXXX号</p>
+      <p>本站最后更新：<span id="today"></span>
     </div>
+
   </div>
 
   <!-- 成功弹窗 -->

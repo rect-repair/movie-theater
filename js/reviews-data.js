@@ -16,7 +16,7 @@ window.REVIEWS = [
     text: "一个人去电影院，结果成了电影院只有我一人。 剧情，篮球战术，bgm，音效，节奏。感觉全部不在线。 我喜欢的不是漫画是tv版动画。不过这个导演，确实拍电影还差点火候。 中间一段全静音我怀疑影院音响坏了。 怎么说呢。 部分人为了情怀买单，我觉得这东西不能叫电影。"
   },
   {
-    user: "小鹿乱撞", film: 5, date: "2016-11-02", stars: 4, useful: 6,
+    user: "天气账号", film: 5, date: "2016-11-02", stars: 4, useful: 6,
     text: "电影院人全走光了，凌晨三点就我一个人在等第二个彩蛋，好心酸"
   },
   {
@@ -28,7 +28,7 @@ window.REVIEWS = [
     text: "一个人在电影院看的，四星推荐，还有一星给空荡荡的椅子。"
   },
   {
-    user: "只看烂片", film: 4, date: "2016-06-02", stars: 5, useful: 152,
+    user: "不吃香菜", film: 4, date: "2016-06-02", stars: 5, useful: 152,
     text: "上课给学生放，他们全都睡着了，我的内心世界就像倒数第三个镜头中的父亲：寂寥。"
   },
   {
@@ -57,7 +57,7 @@ window.REVIEWS = [
   },
   {
     user: "三排七座", film: 8, date: "2015-07-13", stars: 5, useful: 2,
-    text: "咱也有英雄叫monkey king。PS：散场时没人走，工作人员喊：没有彩蛋，没有彩蛋。还是没人走。"
+    text: "咱也有英雄叫{{5}}PS：散场时没人走，工作人员喊：没有彩蛋，没有彩蛋。还是没人走。"
   },
   {
     user: "放映员小王", film: 3, date: "2017-09-01", stars: 5, useful: 79,
@@ -113,7 +113,7 @@ window.REVIEWS = [
   },
   {
     user: "塑料袋", film: 3, date: "2016-09-12", stars: 4, useful: 225,
-    text: "明知山有釜，偏向{{3}}。听名字像福建人拍的。"
+    text: "听名字像福建人拍的。"
   },
   {
     user: "小饼干", film: 6, date: "2015-05-13", stars: 3, useful: 64,
@@ -208,15 +208,15 @@ window.REVIEWS = [
     text: "纸飞机+挥动的小手——那一刻，什么都值了"
   },
   {
-    user: "薄荷绿", film: 4, date: "2009-05-02", stars: 5, useful: 168,
-    text: "十部南京也抵不过一部{{4}}。"
+    user: "yumi kiiro", film: 4, date: "2009-05-02", stars: 5, useful: 168,
+    text: "十部{{2}}也抵不过一部{{4}}。"
   },
   {
     user: "午夜场", film: 4, date: "2016-06-06", stars: 5, useful: 145,
     text: "这片最大的反转不是影片末尾的谜底揭晓，而是看完影片后我查到女主角拍摄时已经五十六岁了。昏迷。"
   },
   {
-    user: "阿久不吃香菜", film: 5, date: "2017-01-27", stars: 1, useful: 418,
+    user: "阿九只看烂片", film: 5, date: "2017-01-27", stars: 1, useful: 418,
     text: "你们缺钱直接给大家个支付宝就行了。真不用这样。"
   },
   {
@@ -268,7 +268,7 @@ window.REVIEWS = [
     text: "青春片就算不堕胎不分手不撕逼也可以是大烂片。"
   },
   {
-    user: "夏夜晚风", film: 2, date: "2015-04-23", stars: 1, useful: 140,
+    user: "v我10101100", film: 2, date: "2015-04-23", stars: 1, useful: 140,
     text: "点我一次票房少一千万"
   },
   {

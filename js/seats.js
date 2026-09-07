@@ -18,6 +18,12 @@
     setTimeout(function () { c.abort(); }, ms);
     return c.signal;
   }
+  function timed(p, ms) {
+    return new Promise(function (resolve, reject) {
+      var t = setTimeout(function () { reject(new Error("timeout")); }, ms);
+      p.then(function (v) { clearTimeout(t); resolve(v); }, function (e) { clearTimeout(t); reject(e); });
+    });
+  }
   function absorb(list) {
     if (!list || !list.length) return;
     list.forEach(function (id) { remote[id] = 1; });
@@ -26,8 +32,8 @@
   function sync(cb) {
     if (!base || typeof fetch === "undefined") { cb && cb(false); return; }
     if (!syncing) {
-      syncing = fetch(base + "/seats", { cache: "no-store", signal: signal(3500) })
-        .then(function (r) { return r.ok ? r.json() : null; })
+      syncing = timed(fetch(base + "/seats", { cache: "no-store", signal: signal(3500) })
+        .then(function (r) { return r.ok ? r.json() : null; }), 3500)
         .then(function (d) {
           syncing = null;
           if (d && d.taken) { remote = {}; absorb(d.taken); return true; }
@@ -40,13 +46,12 @@
 
   function report(booking, cb) {
     if (!base || typeof fetch === "undefined") { cb("offline"); return; }
-    fetch(base + "/seats", {
+    timed(fetch(base + "/seats", {
       method: "POST",
       headers: { "Content-Type": "text/plain" },
       body: JSON.stringify({ seat: booking.seat, no: booking.no }),
       signal: signal(5000)
-    })
-      .then(function (r) { return r.json(); })
+    }).then(function (r) { return r.json(); }), 5000)
       .then(function (d) {
         if (d && d.taken) absorb(d.taken);
         if (d && d.ok) cb("ok");

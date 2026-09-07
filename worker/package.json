@@ -1,0 +1,13 @@
+{
+  "name": "worker",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "admin": "node admin.js"
+  },
+  "devDependencies": {
+    "wrangler": "^4.129.0"
+  },
+  "private": true
+}
