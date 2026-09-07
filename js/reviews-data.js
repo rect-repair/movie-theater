@@ -48,7 +48,7 @@ window.REVIEWS = [
     text: "看完后一整天都很担心身后是不是有另一个自己在看着我。"
   },
   {
-    user: "猫头鹰", film: 5, date: "2008-05-23", stars: 5, useful: 61,
+    user: "猫头鹰", film: 5, date: "2018-05-23", stars: 5, useful: 61,
     text: "出差的时候，常常在不同时间不同地方醒来：“我在哪？”——这种感觉很不好，真的很不好"
   },
   {
@@ -148,11 +148,11 @@ window.REVIEWS = [
     text: "从此以后，领养小孩需做骨龄测试。"
   },
   {
-    user: "已注销", film: 4, date: "2005-07-22", stars: 5, useful: 150,
+    user: "已注销", film: 4, date: "2015-07-22", stars: 5, useful: 150,
     text: "人戏不分，不疯魔不成活。"
   },
   {
-    user: "过期胶卷", film: 4, date: "2007-10-14", stars: 5, useful: 429,
+    user: "过期胶卷", film: 4, date: "2010-10-14", stars: 5, useful: 429,
     text: "他竟当面一语点破：虞姬是真虞姬，霸王是假霸王。"
   },
   {
@@ -160,7 +160,7 @@ window.REVIEWS = [
     text: "他用别人的相片拼凑出她的样子， 在这个虚假的，冷漠无情的世界里只有这份思念是唯一的真实"
   },
   {
-    user: "一个人看电影", film: 5, date: "2007-02-26", stars: 5, useful: 272,
+    user: "一个人看电影", film: 5, date: "2010-02-26", stars: 5, useful: 272,
     text: "某一天我突然明白，他不能离开的不是那艘船，而是那片养育他的精神家园"
   },
   {
@@ -168,7 +168,7 @@ window.REVIEWS = [
     text: "一遍烂，两遍笑，三遍哭"
   },
   {
-    user: "已注销", film: 6, date: "2005-09-04", stars: 5, useful: 193,
+    user: "已注销", film: 6, date: "2015-09-04", stars: 5, useful: 193,
     text: "从没见过那么流氓的温柔，从没见过那么温柔的流氓。"
   },
   {
@@ -184,11 +184,11 @@ window.REVIEWS = [
     text: "如果你对一个人有特别的感情，你会更喜欢叫他的全名。"
   },
   {
-    user: "有猫饼", film: 4, date: "2009-04-03", stars: 5, useful: 57,
+    user: "有猫饼", film: 4, date: "2019-04-03", stars: 5, useful: 57,
     text: "在我最美好的时间,我最喜欢的人不在我身边。如果时间可以重新开始该多好。"
   },
   {
-    user: "蛋黄酥", film: 4, date: "2006-05-16", stars: 5, useful: 32,
+    user: "蛋黄酥", film: 4, date: "2016-05-16", stars: 5, useful: 32,
     text: "东京那么大，如果有一天走失了，恐怕一辈子不能再相见……"
   },
   {
@@ -200,11 +200,11 @@ window.REVIEWS = [
     text: "你永远不会知道他人的皮囊之下，到底藏着什么样的秘密。就像你不会知道，万人朝拜的菩萨肚子里有一具死尸，也不会知道一个收垃圾的大叔，屋子里摆满了洋娃娃。"
   },
   {
-    user: "冰美式续命", film: 5, date: "2006-05-10", stars: 5, useful: 58,
+    user: "冰美式续命", film: 5, date: "2010-05-10", stars: 5, useful: 58,
     text: "世界上有那么多女人那么多酒馆，但她偏偏走进我的这家。"
   },
   {
-    user: "木星", film: 6, date: "2008-08-01", stars: 5, useful: 268,
+    user: "木星", film: 6, date: "2018-08-01", stars: 5, useful: 268,
     text: "纸飞机+挥动的小手——那一刻，什么都值了"
   },
   {
@@ -216,7 +216,7 @@ window.REVIEWS = [
     text: "这片最大的反转不是影片末尾的谜底揭晓，而是看完影片后我查到女主角拍摄时已经五十六岁了。昏迷。"
   },
   {
-    user: "阿九只看烂片", film: 5, date: "2017-01-27", stars: 1, useful: 418,
+    user: "阿九只看烂片", film: 5, date: "2016-01-27", stars: 1, useful: 418,
     text: "你们缺钱直接给大家个支付宝就行了。真不用这样。"
   },
   {
@@ -268,7 +268,7 @@ window.REVIEWS = [
     text: "青春片就算不堕胎不分手不撕逼也可以是大烂片。"
   },
   {
-    user: "v我10101100", film: 2, date: "2015-04-23", stars: 1, useful: 140,
+    user: "v我10101100", film: 2, date: "2017-04-23", stars: 1, useful: 180,
     text: "点我一次票房少一千万"
   },
   {
