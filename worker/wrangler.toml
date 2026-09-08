@@ -2,9 +2,12 @@ name = "jt-seats"
 main = "worker.js"
 compatibility_date = "2026-09-01"
 
-# 1. npx wrangler kv namespace create SEATS   → 把输出的 id 填到下面
-# 2. npx wrangler secret put ADMIN_KEY        → 输入一个自己记得住的口令
-# 3. npx wrangler deploy                      → 得到 https://jt-seats.<账号>.workers.dev
-[[kv_namespaces]]
-binding = "SEATS"
-id = "PASTE_KV_NAMESPACE_ID_HERE"
+# 1. npx wrangler login                    → 浏览器里点 Allow
+# 2. npx wrangler deploy                   → 得到 https://jt-seats.<账号>.workers.dev
+# 3. npx wrangler secret put ADMIN_KEY     → 管理页登录口令（随便一个记得住的长句子）
+# 4. npx wrangler secret put GITHUB_TOKEN  → GitHub fine-grained token，Resource owner 选 rect-repair，只给这个仓库 Contents: Read and write
+[vars]
+GITHUB_REPO = "rect-repair/movie-theater"
+GITHUB_BRANCH = "main"
+SEATS_PATH = "data/seats.json"
+CONFIG_PATH = "data/taken.js"
