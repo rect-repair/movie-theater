@@ -816,11 +816,16 @@ label {
   border-radius: 4px;
 }
 
+#seatmap .rows {
+  width: max-content;
+  margin: 0 auto;
+}
+
 #seatmap .row {
   display: flex;
   align-items: center;
   width: max-content;
-  margin: 5px auto;
+  margin: 5px 0;
 }
 
 #seatmap .rowlabel {
@@ -961,7 +966,7 @@ label {
   }
 
   #seatmap .row {
-    margin: 4px auto;
+    margin: 4px 0;
   }
 
   #seatmap .rowlabel {

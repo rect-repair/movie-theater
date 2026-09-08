@@ -2,10 +2,20 @@
   var C = window.SEAT_CONFIG;
   var SRC = "data/seats.json";
 
+  function colsIn(r) {
+    return (C.rowCols && C.rowCols[r]) || C.cols;
+  }
+
+  function total() {
+    var n = 0;
+    for (var r = 1; r <= C.rows; r++) n += colsIn(r);
+    return n;
+  }
+
   function allSeatIds() {
     var ids = [];
     for (var r = 1; r <= C.rows; r++)
-      for (var c = 1; c <= C.cols; c++) ids.push(r + "-" + c);
+      for (var c = 1; c <= colsIn(r); c++) ids.push(r + "-" + c);
     return ids;
   }
 
@@ -54,11 +64,13 @@
     var n = Object.keys(t).length;
     var mine = myBooking();
     if (mine && !t[mine.seat]) n += 1;
-    return C.rows * C.cols - C.RESERVED_SEATS.length - n;
+    return total() - C.RESERVED_SEATS.length - n;
   }
 
   window.Seats = {
     ids: allSeatIds,
+    cols: colsIn,
+    total: total,
     taken: takenSet,
     remaining: remaining,
     myBooking: myBooking,

@@ -15,7 +15,7 @@ Taken seats live in `data/seats.json` and nowhere else. The site is static: ever
 
 Seat ids are `row-seat`, so `3-5` is 3排5座. A visitor's own booking (in their `localStorage`) always wins over this list on their device: their seat shows as 您的座位, never 已订, and is not double-counted.
 
-Layout, showtime, and the 调查组 reserved seats stay in `data/taken.js`.
+Layout, showtime, and the 调查组 reserved seats stay in `data/taken.js`. `cols` is the default row length and `rowCols` overrides it per row (from the floorplan: rows 4 to 8 have 10 seats, row 12 has 15, 143 in total).
 
 ### Editing it: the admin page (`worker/`)
 

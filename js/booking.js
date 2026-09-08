@@ -20,6 +20,9 @@
   function renderSeats() {
     var map = $("seatmap");
     map.innerHTML = "";
+    var rows = document.createElement("div");
+    rows.className = "rows";
+    map.appendChild(rows);
     for (var r = 1; r <= C.rows; r++) {
       var row = document.createElement("div");
       row.className = "row";
@@ -27,7 +30,8 @@
       lab.className = "rowlabel";
       lab.textContent = r + "排";
       row.appendChild(lab);
-      for (var c = 1; c <= C.cols; c++) {
+      var cols = S.cols(r);
+      for (var c = 1; c <= cols; c++) {
         var id = r + "-" + c;
         var b = document.createElement("button");
         b.type = "button";
@@ -41,11 +45,11 @@
         else if (picked === id) { b.classList.add("selected"); }
         b.addEventListener("click", onSeat);
         row.appendChild(b);
-        if (C.aisleAfter.indexOf(c) !== -1) {
+        if (c < cols && C.aisleAfter.indexOf(c) !== -1) {
           var g = document.createElement("span"); g.className = "gap"; row.appendChild(g);
         }
       }
-      map.appendChild(row);
+      rows.appendChild(row);
     }
   }
 

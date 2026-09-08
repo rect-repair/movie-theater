@@ -211,6 +211,7 @@ const PAGE = `<!doctype html>
   .seat.reserved, #legend i.reserved { background: #e0c27a; border-color: #b8964a; cursor: default; }
   .seat.dirty, #legend i.dirty { outline: 2px solid #c8161d; outline-offset: -1px; }
   #changes { font-size: 13px; color: #8b1e1e; margin: 8px 0 0; min-height: 1.6em; }
+  @media (max-width: 400px) { .seat { width: 18px; font-size: 10px; } .row { gap: 1px; } .gap { width: 4px; } }
 </style>
 </head>
 <body>
@@ -248,6 +249,8 @@ const PAGE = `<!doctype html>
   }
 
   function apply(d) { saved = setOf(d.taken); sha = d.sha; }
+  function colsIn(r) { return (C.rowCols && C.rowCols[r]) || C.cols; }
+  function total() { var n = 0; for (var r = 1; r <= C.rows; r++) n += colsIn(r); return n; }
 
   function render() {
     var map = $("map");
@@ -256,7 +259,8 @@ const PAGE = `<!doctype html>
     for (var r = 1; r <= C.rows; r++) {
       var row = document.createElement("div"); row.className = "row";
       var lab = document.createElement("span"); lab.className = "rowlabel"; lab.textContent = r + "排"; row.appendChild(lab);
-      for (var c = 1; c <= C.cols; c++) {
+      var cols = colsIn(r);
+      for (var c = 1; c <= cols; c++) {
         var id = r + "-" + c;
         var b = document.createElement("button"); b.type = "button"; b.className = "seat"; b.textContent = c; b.title = label(id);
         b.setAttribute("data-id", id);
@@ -267,12 +271,12 @@ const PAGE = `<!doctype html>
           b.addEventListener("click", onSeat);
         }
         row.appendChild(b);
-        if (C.aisleAfter.indexOf(c) !== -1) { var g = document.createElement("span"); g.className = "gap"; row.appendChild(g); }
+        if (c < cols && C.aisleAfter.indexOf(c) !== -1) { var g = document.createElement("span"); g.className = "gap"; row.appendChild(g); }
       }
       map.appendChild(row);
     }
-    var n = keys(taken).length, total = C.rows * C.cols - C.RESERVED_SEATS.length;
-    $("count").textContent = "已订 " + n + " · 剩余 " + (total - n);
+    var n = keys(taken).length, free = total() - C.RESERVED_SEATS.length - n;
+    $("count").textContent = "已订 " + n + " · 剩余 " + free;
     var d = diff();
     var parts = d.added.map(function (id) { return "+ " + label(id); }).concat(d.removed.map(function (id) { return "− " + label(id); }));
     $("changes").textContent = parts.length ? "未保存：" + parts.join("，") : "";
