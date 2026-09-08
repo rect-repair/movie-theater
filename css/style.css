@@ -825,7 +825,7 @@ label {
   display: flex;
   align-items: center;
   width: max-content;
-  margin: 5px 0;
+  margin: 8px 0;
 }
 
 #seatmap .rowlabel {
@@ -845,7 +845,7 @@ label {
 
 .seat {
   width: 32px;
-  height: 32px;
+  height: 33px;
   margin: 0 2px;
   flex-shrink: 0;
   border: 1px solid #7fa87f;
@@ -980,8 +980,8 @@ label {
   }
 
   .seat {
-    width: clamp(20px, calc((100vw - 106px) / 13), 28px);
-    height: clamp(19px, calc((100vw - 106px) / 14), 26px);
+    width: clamp(18px, calc((100vw - 92px) / var(--cols, 15)), 28px);
+    height: clamp(30px, calc((100vw - 106px) / 14), 26px);
     margin: 0 1px;
     font-size: 10px;
   }

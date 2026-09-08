@@ -23,6 +23,9 @@
     var rows = document.createElement("div");
     rows.className = "rows";
     map.appendChild(rows);
+    var widest = 0;
+    for (var i = 1; i <= C.rows; i++) widest = Math.max(widest, S.cols(i));
+    map.style.setProperty("--cols", widest);
     for (var r = 1; r <= C.rows; r++) {
       var row = document.createElement("div");
       row.className = "row";
