@@ -70,6 +70,7 @@
   function onSeat(e) {
     var b = e.currentTarget, id = b.dataset.id;
     var msg = $("seat-msg");
+    if (C.CLOSED) { msg.textContent = "本场放映已结束，在线订票已关闭。"; return; }
     if (b.classList.contains("reserved")) { msg.textContent = "该座位为调查组预留。"; return; }
     if (b.classList.contains("taken") || b.classList.contains("mine")) { msg.textContent = "该座位已被预订，请选择其他座位。"; return; }
     if (mine) { msg.textContent = "本机已有订票记录，如需更换请先清除记录。"; return; }
